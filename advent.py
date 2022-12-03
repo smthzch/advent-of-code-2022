@@ -1,4 +1,4 @@
-from treeofknowledge import day1, day2
+from treeofknowledge import day1, day2, day3
 
 welcome = """######################################
 #
@@ -24,3 +24,8 @@ rps_score = day2.get_score1(pth.format(2))
 print(f"Total score :{ rps_score }")
 rps_score = day2.get_score2(pth.format(2))
 print(f"Total score :{ rps_score }")
+
+print("---Day 3---")
+sack = day3.ElfSack(pth.format(3))
+sack.get_duplicate_priorities()
+sack.get_badge_priorities()
