@@ -1,4 +1,4 @@
-from treeofknowledge import day1, day2, day3
+from treeofknowledge import day1, day2, day3, day4
 
 welcome = """######################################
 #
@@ -29,3 +29,8 @@ print("---Day 3---")
 sack = day3.ElfSack(pth.format(3))
 sack.get_duplicate_priorities()
 sack.get_badge_priorities()
+
+print("---Day 4---")
+groups = day4.ElfGroup(pth.format(4))
+groups.count_contained()
+groups.count_overlaps()
