@@ -1,4 +1,4 @@
-from treeofknowledge import day1, day2, day3, day4
+from treeofknowledge import day1, day2, day3, day4, day5
 
 welcome = """######################################
 #
@@ -34,3 +34,8 @@ print("---Day 4---")
 groups = day4.ElfGroup(pth.format(4))
 groups.count_contained()
 groups.count_overlaps()
+
+print("---Day 5---")
+crates = day5.Crates(9, "data/day5_stack.txt")
+crates.move_one("data/day5_moves.txt")
+crates.move_all("data/day5_moves.txt")
