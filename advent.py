@@ -1,4 +1,4 @@
-from treeofknowledge import day1, day2, day3, day4, day5
+from treeofknowledge import *
 
 welcome = """######################################
 #
@@ -17,7 +17,6 @@ elf_cals = day1.get_elf_cals(pth.format(1))
 elf_cals.sort()
 print(f"Max cals :{ elf_cals[-1] }")
 print(f"Top 3 cals :{ sum(elf_cals[-3:]) }")
-
 
 print("---Day 2---")
 rps_score = day2.get_score1(pth.format(2))
@@ -39,3 +38,7 @@ print("---Day 5---")
 crates = day5.Crates(9, "data/day5_stack.txt")
 crates.move_one("data/day5_moves.txt")
 crates.move_all("data/day5_moves.txt")
+
+print("---Day 6---")
+signal = day6.ElfSignal(pth.format(6))
+signal.find_start()

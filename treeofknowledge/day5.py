@@ -25,8 +25,7 @@ class Crates:
                 onto = int(cmds[5]) - 1
                 
                 for m in range(move):
-                    stacks[onto].insert(0, stacks[off][0])
-                    stacks[off].pop(0)
+                    stacks[onto].insert(0, stacks[off].pop(0))
         
         print("Top stacks move one: ", end='')
         for stack in stacks:
