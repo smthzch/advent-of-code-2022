@@ -18,7 +18,7 @@ class Directory:
 
     def get_size(self):
         self.size = sum([f.size for f in self.files])
-        self.size += sum([d.get_size() for d in self.sub_dirs.values()])
+        self.size += sum([d.get_size() for d in self.sub_dirs.values()]) # recursive
         return self.size
 
 class FileSystem:
@@ -26,7 +26,7 @@ class FileSystem:
         self.root = Directory("/", None)
         self.current_dir = self.root
 
-        # read in the command line
+        # read in the command line to build filesystem structure
         with open(pth, "r") as rdr:
             rdr.readline() # skip first line: $ cd /
             for line in rdr.readlines():
@@ -44,9 +44,11 @@ class FileSystem:
                 else:
                     self.current_dir.add_item(chunks[0], chunks[1])
 
+        # recursively calculate all directory sizes
         self.root.get_size()
 
-    def sum_dirs(self, max_size=100000):
+    def sum_dirs(self, max_size=100_000):
+        # sum the sizes of all directories <= max size
         total_size = 0
 
         # traverse tree structure w/ breadth first search
@@ -58,7 +60,8 @@ class FileSystem:
             
         print(f"Total size <= {max_size}: {total_size}")
 
-    def to_delete(self, total_size=70000000, size_needed=30000000):
+    def to_delete(self, total_size=70_000_000, size_needed=30_000_000):
+        # determine smallest directory to delete that will free up enough space
         unused = total_size - self.root.size
         shortfall = size_needed - unused
         smallest = self.root.size
