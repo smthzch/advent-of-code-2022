@@ -24,7 +24,7 @@ class Directory:
 class FileSystem:
     def __init__(self, pth):
         self.root = Directory("/", None)
-        self.current_dir = self.root
+        current_dir = self.root
 
         # read in the command line to build filesystem structure
         with open(pth, "r") as rdr:
@@ -37,12 +37,12 @@ class FileSystem:
                         continue # this is implicitly handled by there not being a $ next
                     elif chunks[1] == "cd":
                         if chunks[2] == "..":
-                            self.current_dir = self.current_dir.parent_dir
+                            current_dir = current_dir.parent_dir
                         else:
-                            self.current_dir = self.current_dir.sub_dirs[chunks[2]]
+                            current_dir = current_dir.sub_dirs[chunks[2]]
                 # dir or file listing
                 else:
-                    self.current_dir.add_item(chunks[0], chunks[1])
+                    current_dir.add_item(chunks[0], chunks[1])
 
         # recursively calculate all directory sizes
         self.root.get_size()
