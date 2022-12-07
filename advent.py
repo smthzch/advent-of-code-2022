@@ -42,3 +42,8 @@ crates.move_all("data/day5_moves.txt")
 print("---Day 6---")
 signal = day6.ElfSignal(pth.format(6))
 signal.find_start()
+
+print("---Day 7---")
+fs = day7.FileSystem(pth.format(7))
+fs.sum_dirs()
+fs.to_delete()
