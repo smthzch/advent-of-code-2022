@@ -47,3 +47,8 @@ print("---Day 7---")
 fs = day7.FileSystem(pth.format(7))
 fs.sum_dirs()
 fs.to_delete()
+
+print("---Day 8---")
+treehouse = day8.TreeHouse(pth.format(8))
+treehouse.count_visible()
+treehouse.max_scenic_score()
