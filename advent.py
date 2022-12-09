@@ -52,3 +52,8 @@ print("---Day 8---")
 treehouse = day8.TreeHouse(pth.format(8))
 treehouse.count_visible()
 treehouse.max_scenic_score()
+
+print("--- Day 9---")
+rope = day9.Rope(pth.format(9))
+rope.find_visited(n_knots=2)
+rope.find_visited(n_knots=10)
