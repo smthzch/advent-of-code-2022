@@ -38,12 +38,12 @@ class Rope:
         print(f"Locations visited by tail {len(self.visited)}")
 
     def move_tail(self, diff):
-        if (np.abs(diff) <= 1).all(): # if not more than one space away dont move
+        gt = np.abs(diff) > 1
+        if not gt.any(): # if not more than one space away dont move
             return np.array([0, 0])
         else:
             # scale to unit distance (per dim) to get move
             sign = np.sign(diff)
-            gt = np.abs(diff) > 1
             diff[gt] = sign[gt]
             return diff
 
