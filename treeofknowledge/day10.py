@@ -5,7 +5,7 @@ class CRT:
         with open(pth) as rdr:
             self.cmds = [
                 line.strip().split(" ")
-                for line in rdr.readlines()
+                for line in rdr
             ]
 
         self.offset = offset

@@ -12,7 +12,7 @@ class Rope:
         with open(pth) as rdr:
             self.moves = [
                 line.strip().split(" ")
-                for line in rdr.readlines()
+                for line in rdr
             ]
 
     def find_visited(self, n_knots):

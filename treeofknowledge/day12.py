@@ -12,13 +12,9 @@ class Elevation:
         self.end = [-1, -1, -1]
         
         with open(pth) as rdr:
-            i = -1
-            for line in rdr:
-                j = -1
-                i += 1
+            for i, line in enumerate(rdr):
                 row = []
-                for spot in line.strip():
-                    j += 1
+                for j, spot in enumerate(line.strip()):
                     if spot == "S":
                         height = ord("a")
                         self.start = [i, j, height]

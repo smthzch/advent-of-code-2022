@@ -2,7 +2,7 @@ class ElfGroup:
     def __init__(self, pth):
         self.groups = []            
         with open(pth) as rdr:
-            for line in rdr.readlines():
+            for line in rdr:
                 elf1, elf2 = line.split(",")
                 elf1, elf2 = map(self.get_areas, [elf1, elf2])
                 self.groups += [

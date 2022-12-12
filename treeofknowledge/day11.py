@@ -49,9 +49,6 @@ class Monkeys:
             for monkey in self.monkeys:
                 for item, to_monkey in monkey.inspect_items(relief, self.hcf):
                     self.monkeys[to_monkey].take(item)
-
-        for m in self.monkeys:
-            print(m.items_inspected)
         
         items_inspected = [m.items_inspected for m in self.monkeys]
         items_inspected.sort()

@@ -4,7 +4,7 @@ class Crates:
     def __init__(self, num_stacks, stack_pth):
         self.stacks = [[] for i in range(num_stacks)]
         with open(stack_pth) as f:
-            for line in f.readlines():
+            for line in f:
                 row = line.strip().split("]")
                 i = 0
                 for stack in row:

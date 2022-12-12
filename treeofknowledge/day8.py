@@ -5,7 +5,7 @@ class TreeHouse:
         with open(pth) as rdr:
             data = [
                 [int(i) for i in row.strip()]
-                for row in rdr.readlines()
+                for row in rdr
             ]
         
         self.trees = np.array(data)

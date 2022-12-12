@@ -34,7 +34,7 @@ outcome_scores = {
 def get_score1(pth):
     total_score = 0
     with open(pth, 'r') as rdr:
-        for line in rdr.readlines():
+        for line in rdr:
             elf, you = [x.strip().lower() for x in line.split(' ')]
             total_score += outcome_scores[elf + you] + play_scores[you]
     return total_score
