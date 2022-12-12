@@ -68,3 +68,7 @@ monkeys = day11.Monkeys(pth.format(11))
 monkeys.monkey_business(rounds=20, relief=True)
 monkeys = day11.Monkeys(pth.format(11))
 monkeys.monkey_business(rounds=10_000, relief=False)
+
+printd(12)
+topo = day12.Elevation(pth.format(12))
+topo.hill_climb()
