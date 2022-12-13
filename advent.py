@@ -72,3 +72,8 @@ monkeys.monkey_business(rounds=10_000, relief=False)
 printd(12)
 topo = day12.Elevation(pth.format(12))
 topo.hill_climb()
+
+printd(13)
+decoder = day13.Decoder(pth.format(13))
+decoder.correct()
+decoder.bubble_sort()
