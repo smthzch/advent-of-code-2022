@@ -43,25 +43,29 @@ class SandTrap:
         else:
             self.criteria = lambda sand: sand == self.source
 
-        self.filled = set(self.rock)
+        self.filled = set(self.rock) # set of sand and rock
         total_sand = -1
         complete = False
+        # dump sand in one grain at a time
         while not complete:
             sand = self.source
             new_sand, complete = self.step(sand)
+            # while sand still moving try to keep moving
             while new_sand != sand:
                 sand = new_sand
                 new_sand, complete = self.step(sand)
                 if complete: break
-            self.filled.add(sand)
+            self.filled.add(sand) # sand stopped so add to filled locations
             total_sand += 1
 
         total_sand += 1 if criteria == "top" else 0
         print(f"Total sand: {total_sand}")
 
     def step(self, sand):
+        # loop through movement precedence and see if can complete
         for dynamic in self.dynamics:
-            new_sand = tuple(map(sum, zip(sand, dynamic)))
+            new_sand = (sand[0] + dynamic[0], sand[1] + dynamic[1]) # tuple(map(sum, zip(sand, dynamic)))
             complete = self.criteria(new_sand)
             if new_sand not in self.filled and new_sand[1] != self.bottom:
                 return new_sand, complete
+        raise RuntimeError("All dynamic possibilities exhausted.")
