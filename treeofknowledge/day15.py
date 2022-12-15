@@ -1,4 +1,6 @@
 import re
+from shapely.geometry import Polygon
+from shapely.ops import unary_union
 
 class Sensor:
     def __init__(self, pth):
@@ -26,7 +28,7 @@ class Sensor:
         ])
 
     
-    def solve(self, row=2000000):
+    def solve_1(self, row=2000000):
         beacons = set()
         filled = set()
         
@@ -54,7 +56,25 @@ class Sensor:
 
         print(len(filled))
 
-        #self.print_map(filled)
+    def solve_2(self):
+        main_poly = Polygon()
+
+        for pair in self.pairs:
+            sensor = pair["sensor"]
+            distance = pair["distance"]
+
+            poly = Polygon([
+                [sensor[0], sensor[1] + distance],
+                [sensor[0] + distance, sensor[1]],
+                [sensor[0], sensor[1] - distance],
+                [sensor[0] - distance, sensor[1]]
+            ])
+
+            main_poly = unary_union([main_poly, poly])
+
+        centroid = main_poly.interiors[0].centroid
+        x, y = int(centroid.x), int(centroid.y)
+        print(x * 4000000 + y)
 
     def print_map(self, filled, maxv=20):
         m = [
